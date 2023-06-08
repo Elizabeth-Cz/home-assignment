@@ -1,0 +1,50 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  outline: none; /* Remove default outline */
+}
+
+label {
+  font-weight: 500;
+}
+
+input,
+select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input:focus,
+select:focus {
+  outline-color: #2bc0c7;
+  outline-width: 1px;
+}
+
+.btn.add-user {
+  padding: 10px 16px;
+  text-transform: uppercase;
+  background-color: #2bc0c7;
+  color: #fff;
+  border-radius: 50px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn.add-user:hover {
+  background-color: #1e868b;
+}
