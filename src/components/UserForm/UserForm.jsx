@@ -1,27 +1,27 @@
-import { useState, useEffect } from "react";
-import "./UserForm.css";
+import { useState, useEffect } from 'react';
+import './UserForm.css';
 
 const UserForm = ({ onAdd, onUpdate, user }) => {
-  const [employee, setEmployee] = useState({
-    number: "",
-    first_name: "",
-    last_name: "",
-    phone_number: "",
-    email: "",
-    company: "",
+  const [userData, setUserData] = useState({
+    number: '',
+    first_name: '',
+    last_name: '',
+    phone_number: '',
+    email: '',
+    company: '',
   });
 
   useEffect(() => {
     if (user) {
-      setEmployee(user);
+      setUserData(user);
     } else {
-      setEmployee({
-        number: "",
-        first_name: "",
-        last_name: "",
-        phone_number: "",
-        email: "",
-        company: "",
+      setUserData({
+        number: '',
+        first_name: '',
+        last_name: '',
+        phone_number: '',
+        email: '',
+        company: '',
       });
     }
   }, [user]);
@@ -29,27 +29,29 @@ const UserForm = ({ onAdd, onUpdate, user }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (user) {
-      onUpdate(employee);
+      onUpdate(userData);
     } else {
-      onAdd(employee);
+      onAdd(userData);
     }
-    setEmployee({
-      number: "",
-      first_name: "",
-      last_name: "",
-      phone_number: "",
-      email: "",
-      company: "",
+    setUserData({
+      number: '',
+      first_name: '',
+      last_name: '',
+      phone_number: '',
+      email: '',
+      company: '',
     });
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setEmployee((prevEmployee) => ({
-      ...prevEmployee,
+    setUserData((prevUserData) => ({
+      ...prevUserData,
       [name]: value,
     }));
   };
+  const { number, first_name, last_name, phone_number, email, company } =
+    userData;
 
   return (
     <form onSubmit={onSubmit}>
@@ -58,7 +60,7 @@ const UserForm = ({ onAdd, onUpdate, user }) => {
         <input
           type='text'
           name='number'
-          value={employee.number}
+          value={number}
           onChange={handleChange}
         />
       </div>
@@ -67,7 +69,7 @@ const UserForm = ({ onAdd, onUpdate, user }) => {
         <input
           type='text'
           name='first_name'
-          value={employee.first_name}
+          value={first_name}
           onChange={handleChange}
         />
       </div>
@@ -76,7 +78,7 @@ const UserForm = ({ onAdd, onUpdate, user }) => {
         <input
           type='text'
           name='last_name'
-          value={employee.last_name}
+          value={last_name}
           onChange={handleChange}
         />
       </div>
@@ -85,30 +87,25 @@ const UserForm = ({ onAdd, onUpdate, user }) => {
         <input
           type='text'
           name='phone_number'
-          value={employee.phone_number}
+          value={phone_number}
           onChange={handleChange}
         />
       </div>
       <div className='form-control'>
         <label htmlFor='email'>Email Address</label>
-        <input
-          type='text'
-          name='email'
-          value={employee.email}
-          onChange={handleChange}
-        />
+        <input type='text' name='email' value={email} onChange={handleChange} />
       </div>
       <div className='form-control'>
         <label htmlFor='company'>Company</label>
         <input
           type='text'
           name='company'
-          value={employee.company}
+          value={company}
           onChange={handleChange}
         />
       </div>
       <button className='btn btn-primary' type='submit'>
-        {user ? "Update User" : "+ Add User"}
+        {user ? 'Update User' : 'Add User'}
       </button>
     </form>
   );

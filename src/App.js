@@ -1,29 +1,33 @@
-import "./App.css";
-import UserCard from "./components/UserCard/UserCard";
-import { AiOutlineSearch } from "react-icons/ai";
-import { useEffect, useState } from "react";
-import UserForm from "./components/UserForm/UserForm";
-import Modal from "./components/Modal/Modal";
-import DeleteUser from "./components/DeleteUser/DeleteUser";
+import './App.css';
+import UserCard from './components/UserCard/UserCard';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { useEffect, useState } from 'react';
+import UserForm from './components/UserForm/UserForm';
+import Modal from './components/Modal/Modal';
+import DeleteUser from './components/DeleteUser/DeleteUser';
+import Button from './components/button/Button';
 
 function App() {
-  const [employees, setEmployees] = useState([]);
-  const [modal, setModal] = useState("");
+  const storedEmployees = localStorage.getItem('employees');
+  const [employees, setEmployees] = useState(
+    storedEmployees ? JSON.parse(storedEmployees) : []
+  );
+  const [modal, setModal] = useState('');
   const [selectedEmployee, setSelectedEmployee] = useState(null);
 
-  const handleDelete = (id) => {
-    setModal("delete");
-    setSelectedEmployee(id);
+  const handleDelete = (employee) => {
+    setModal('delete');
+    setSelectedEmployee(employee);
   };
 
-  const handleEdit = (id) => {
-    setModal("edit");
-    setSelectedEmployee(id);
+  const handleEdit = (employee) => {
+    setModal('edit');
+    setSelectedEmployee(employee);
   };
 
   const handleAddUser = (newUser) => {
     setEmployees([...employees, newUser]);
-    setModal("");
+    setModal('');
   };
 
   const handleUpdateUser = (updatedUser) => {
@@ -31,7 +35,7 @@ function App() {
       employee.number === selectedEmployee.number ? updatedUser : employee
     );
     setEmployees(updatedEmployees);
-    setModal("");
+    setModal('');
   };
 
   const handleDeleteUser = () => {
@@ -39,51 +43,45 @@ function App() {
       (employee) => employee.number !== selectedEmployee.number
     );
     setEmployees(updatedEmployees);
-    setModal("");
+    setModal('');
   };
 
   useEffect(() => {
-    const storedEmployees = localStorage.getItem("employees");
     if (storedEmployees) {
       setEmployees(JSON.parse(storedEmployees));
-    } else {
-      setEmployees([
-        {
-          number: 3,
-          first_name: "Liz",
-          last_name: "Czarny",
-          phone_number: "0744530109",
-          email: "liz.cz91@gmail.com",
-        },
-      ]);
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("employees", JSON.stringify(employees));
+    localStorage.setItem('employees', JSON.stringify(employees));
   }, [employees]);
 
   return (
     <>
-      {modal !== "" && (
-        <Modal onClose={() => setModal("")}>
-          {modal === "edit" && (
+      {modal !== '' && (
+        <Modal onClose={() => setModal('')}>
+          {modal === 'edit' && (
             <UserForm onUpdate={handleUpdateUser} user={selectedEmployee} />
           )}
-          {modal === "add" && <UserForm onAdd={handleAddUser} />}
-          {modal === "delete" && (
+          {modal === 'add' && <UserForm onAdd={handleAddUser} />}
+          {modal === 'delete' && (
             <DeleteUser
               user={selectedEmployee}
               onDelete={handleDeleteUser}
-              onClose={() => setModal("")}
+              onClose={() => setModal('')}
             />
           )}
         </Modal>
       )}
       <h1>Assignment</h1>
-      <button className='btn btn-primary' onClick={() => setModal("add")}>
-        + Add Employee
-      </button>
+      <Button
+        variant='primary'
+        onClick={() => {
+          setModal('add');
+        }}
+      >
+        Add Employee
+      </Button>
       {employees && employees.length > 0 && (
         <div className='grid'>
           {employees.map((employee) => (

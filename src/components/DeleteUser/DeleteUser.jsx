@@ -1,4 +1,5 @@
-import "./DeleteUser.css";
+import Button from '../button/Button';
+import './DeleteUser.css';
 
 const DeleteUser = ({ user, onDelete, onClose }) => {
   const handleDelete = () => {
@@ -10,12 +11,12 @@ const DeleteUser = ({ user, onDelete, onClose }) => {
     <>
       <h3>Are you sure?</h3>
       <div className='buttons'>
-        <button className='btn btn-delete' onClick={handleDelete}>
-          Delete
-        </button>
-        <button className='btn btn-secondary' onClick={onClose}>
-          Cancel
-        </button>
+        <Button onClick={handleDelete} variant='delete'>
+          delete
+        </Button>
+        <Button onClick={onClose} variant='secondary'>
+          cancel
+        </Button>
       </div>
     </>
   );

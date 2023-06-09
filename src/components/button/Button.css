@@ -1,5 +1,77 @@
-button {
+.btn {
   padding: 10px 16px;
-  background-color: #2bc0c7;
   text-transform: uppercase;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #2bc0c7;
+}
+
+.btn-primary:hover {
+  background-color: #1e868b;
+}
+
+.btn-secondary {
+  color: #1e868b;
+  border: 2px solid #1e868b;
+  background-color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: hsl(183, 64%, 95%);
+}
+
+.btn-edit {
+  width: fit-content;
+  background: none;
+  color: #1e868b;
+  font-size: 1.2rem;
+  padding: 0;
+  margin-left: auto;
+  transition: all 0.3s;
+}
+
+.btn-edit:hover {
+  transform: scale(1.3);
+  color: hsl(183, 64%, 25%);
+}
+
+.btn-delete {
+  border: 1px solid #cc3333;
+  color: #cc3333;
+  background-color: #fff;
+  transition: color 0.3s;
+  /* width: 120px; */
+}
+
+.btn-delete .text {
+  opacity: 0;
+}
+
+.btn-delete .icon {
+  font-size: 1rem;
+  position: absolute;
+}
+
+.btn-delete:hover .icon {
+  position: relative;
+}
+
+.btn-delete:hover .text {
+  opacity: 1;
+}
+
+.btn-delete:hover {
+  background-color: #cc3333;
+  color: #fff;
 }
