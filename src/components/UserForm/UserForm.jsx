@@ -105,7 +105,7 @@ const UserForm = ({ onAdd, onUpdate, user }) => {
         />
       </div>
       <button className='btn btn-primary' type='submit'>
-        {user ? 'Update User' : 'Add User'}
+        {user ? 'Update User' : 'Add Employee'}
       </button>
     </form>
   );

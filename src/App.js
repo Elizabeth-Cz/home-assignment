@@ -1,6 +1,6 @@
 import './App.css';
 import UserCard from './components/UserCard/UserCard';
-import { AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineSearch, AiOutlinePlus } from 'react-icons/ai';
 import { useEffect, useState } from 'react';
 import UserForm from './components/UserForm/UserForm';
 import Modal from './components/Modal/Modal';
@@ -73,27 +73,41 @@ function App() {
           )}
         </Modal>
       )}
-      <h1>Assignment</h1>
-      <Button
-        variant='primary'
-        onClick={() => {
-          setModal('add');
-        }}
-      >
-        Add Employee
-      </Button>
-      {employees && employees.length > 0 && (
-        <div className='grid'>
-          {employees.map((employee) => (
-            <UserCard
-              key={employee.number}
-              user={employee}
-              onDelete={() => handleDelete(employee)}
-              onEdit={() => handleEdit(employee)}
-            />
-          ))}
+      <div className='page'>
+        <h1>Assignment</h1>
+        <div className='controls'>
+          <div className='search-bar'>
+            <AiOutlineSearch className='search-icon' />
+            <input type='text' name='search' className='search-input' />
+          </div>
+          <select name='sort' id='sort'>
+            <option value=''>Sort By...</option>
+            <option value='name'>Name</option>
+            <option value='number'>Employee Number</option>
+            <option value='company'>Company</option>
+          </select>
+          <Button
+            variant='primary'
+            onClick={() => {
+              setModal('add');
+            }}
+          >
+            + Add Employee
+          </Button>
         </div>
-      )}
+        {employees && employees.length > 0 && (
+          <div className='grid'>
+            {employees.map((employee) => (
+              <UserCard
+                key={employee.number}
+                user={employee}
+                onDelete={() => handleDelete(employee)}
+                onEdit={() => handleEdit(employee)}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </>
   );
 }

@@ -15,18 +15,39 @@ p {
   font-family: 'Poppins', sans-serif;
 }
 
-.page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
+label {
+  font-weight: 500;
+  margin-bottom: 5px;
 }
 
-.grid {
-  width: 1024px;
+input,
+select,
+option {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input:focus,
+select:focus {
+  outline-color: #2bc0c7;
+  outline-width: 1px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.grid,
+.controls {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+  gap: 1rem;
 }
 
 .search-bar {
@@ -34,16 +55,36 @@ p {
   align-items: center;
   border: 1px solid #ccc;
   border-radius: 4px;
-  padding: 0 6px;
 }
 
 .search-icon {
   color: #ccc;
-  margin-right: 6px;
+  margin: 6px;
 }
 
 .search-input {
   border: none;
   outline: none;
   flex: 1;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+@media (min-width: 600px) {
+  .grid,
+  .controls {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .grid,
+  .controls {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
