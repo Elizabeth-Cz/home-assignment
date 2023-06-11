@@ -3,12 +3,12 @@ import './UserForm.css';
 
 const UserForm = ({ onAdd, onUpdate, user }) => {
   const [userData, setUserData] = useState({
-    number: '',
+    employee_number: '',
     first_name: '',
     last_name: '',
     phone_number: '',
-    email: '',
-    company: '',
+    email_address: '',
+    company_id: '',
   });
 
   useEffect(() => {
@@ -16,12 +16,12 @@ const UserForm = ({ onAdd, onUpdate, user }) => {
       setUserData(user);
     } else {
       setUserData({
-        number: '',
+        employee_number: '',
         first_name: '',
         last_name: '',
         phone_number: '',
-        email: '',
-        company: '',
+        email_address: '',
+        company_id: '',
       });
     }
   }, [user]);
@@ -29,17 +29,17 @@ const UserForm = ({ onAdd, onUpdate, user }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (user) {
-      onUpdate(userData);
+      onUpdate && onUpdate(userData);
     } else {
-      onAdd(userData);
+      onAdd && onAdd(userData);
     }
     setUserData({
-      number: '',
+      employee_number: '',
       first_name: '',
       last_name: '',
       phone_number: '',
-      email: '',
-      company: '',
+      email_address: '',
+      company_id: '',
     });
   };
 
@@ -50,8 +50,14 @@ const UserForm = ({ onAdd, onUpdate, user }) => {
       [name]: value,
     }));
   };
-  const { number, first_name, last_name, phone_number, email, company } =
-    userData;
+  const {
+    employee_number,
+    first_name,
+    last_name,
+    phone_number,
+    email_address,
+    company_id,
+  } = userData;
 
   return (
     <form onSubmit={onSubmit}>
@@ -59,8 +65,8 @@ const UserForm = ({ onAdd, onUpdate, user }) => {
         <label htmlFor='number'>Employee Number</label>
         <input
           type='text'
-          name='number'
-          value={number}
+          name='employee_number'
+          value={employee_number}
           onChange={handleChange}
         />
       </div>
@@ -92,15 +98,20 @@ const UserForm = ({ onAdd, onUpdate, user }) => {
         />
       </div>
       <div className='form-control'>
-        <label htmlFor='email'>Email Address</label>
-        <input type='text' name='email' value={email} onChange={handleChange} />
-      </div>
-      <div className='form-control'>
-        <label htmlFor='company'>Company</label>
+        <label htmlFor='email_address'>Email Address</label>
         <input
           type='text'
-          name='company'
-          value={company}
+          name='email_address'
+          value={email_address}
+          onChange={handleChange}
+        />
+      </div>
+      <div className='form-control'>
+        <label htmlFor='company_id'>Company</label>
+        <input
+          type='text'
+          name='company_id'
+          value={company_id}
           onChange={handleChange}
         />
       </div>

@@ -2,8 +2,8 @@ import Button from '../button/Button';
 import './DeleteUser.css';
 
 const DeleteUser = ({ user, onDelete, onClose }) => {
-  const handleDelete = () => {
-    onDelete(user);
+  const handleDelete = async () => {
+    await onDelete(user);
     onClose();
   };
 

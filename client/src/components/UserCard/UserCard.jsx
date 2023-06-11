@@ -9,7 +9,13 @@ import {
 import Button from '../button/Button';
 
 const UserCard = ({ user, onDelete, onEdit }) => {
-  const { first_name, last_name, number, phone_number, email } = user;
+  const {
+    first_name,
+    last_name,
+    employee_number,
+    phone_number,
+    email_address,
+  } = user;
   return (
     <div className='user-card'>
       <Button variant='edit' onClick={onEdit}>
@@ -25,7 +31,7 @@ const UserCard = ({ user, onDelete, onEdit }) => {
         </h3>
         <p className='user-info-control'>
           <AiOutlineNumber />
-          {number}
+          {employee_number}
         </p>
         <p className='user-info-control'>
           <AiOutlinePhone />
@@ -33,7 +39,7 @@ const UserCard = ({ user, onDelete, onEdit }) => {
         </p>
         <p className='user-info-control'>
           <AiOutlineMail />
-          {email}
+          {email_address}
         </p>
       </div>
 
