@@ -1,4 +1,4 @@
-import Button from '../button/Button';
+import Button from '../Button/Button';
 import './DeleteUser.css';
 
 const DeleteUser = ({ user, onDelete, onClose }) => {
