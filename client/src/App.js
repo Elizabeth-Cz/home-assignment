@@ -6,6 +6,7 @@ import UserForm from './components/UserForm/UserForm';
 import Modal from './components/Modal/Modal';
 import DeleteUser from './components/DeleteUser/DeleteUser';
 import Button from './components/Button/Button';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const fakeUsers = [
@@ -59,6 +60,14 @@ function App() {
   const [employees, setEmployees] = useState([]);
   const [modal, setModal] = useState('');
   const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredEmployees, setFilteredEmployees] = useState([]);
+
+  const handleAddUser = (newUser) => {
+    setEmployees([...employees, newUser]);
+    setModal('');
+    saveToLocalStorage([...employees, newUser]);
+  };
 
   const handleDelete = (employee) => {
     setModal('delete');
@@ -68,12 +77,6 @@ function App() {
   const handleEdit = (employee) => {
     setModal('edit');
     setSelectedEmployee(employee);
-  };
-
-  const handleAddUser = (newUser) => {
-    setEmployees([...employees, newUser]);
-    setModal('');
-    saveToLocalStorage([...employees, newUser]);
   };
 
   const handleUpdateUser = (updatedUser) => {
@@ -94,6 +97,17 @@ function App() {
     saveToLocalStorage(updatedEmployees);
   };
 
+  const handleSearch = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+
+    const filtered = employees.filter((employee) => {
+      const fullName = `${employee.first_name} ${employee.last_name}`;
+      return fullName.toLowerCase().includes(query.toLowerCase());
+    });
+    setFilteredEmployees(filtered);
+  };
+
   const saveToLocalStorage = (data) => {
     localStorage.setItem('employees', JSON.stringify(data));
   };
@@ -107,6 +121,15 @@ function App() {
       saveToLocalStorage(fakeUsers);
     }
   }, []);
+
+  useEffect(() => {
+    setFilteredEmployees(
+      employees.filter((employee) => {
+        const fullName = `${employee.first_name} ${employee.last_name}`;
+        return fullName.toLowerCase().includes(searchQuery.toLowerCase());
+      })
+    );
+  }, [employees, searchQuery]);
 
   return (
     <>
@@ -126,7 +149,7 @@ function App() {
         </Modal>
       )}
       <div className='page'>
-        <h1>4Indusry</h1>
+        <h1>User Management System</h1>
         <div className='controls'>
           <Button
             variant='primary'
@@ -136,12 +159,22 @@ function App() {
           >
             + Add Employee
           </Button>
+          <div className='search-bar'>
+            <AiOutlineSearch className='search-icon' />
+            <input
+              className='search-input'
+              type='text'
+              value={searchQuery}
+              onChange={(e) => handleSearch(e)}
+              placeholder='Search by name...'
+            />
+          </div>
         </div>
-        {employees && employees.length > 0 && (
+        {filteredEmployees && filteredEmployees.length > 0 && (
           <div className='grid'>
-            {employees.map((employee) => (
+            {filteredEmployees.map((employee) => (
               <UserCard
-                key={employee.number}
+                key={employee.user_id}
                 user={employee}
                 onDelete={() => handleDelete(employee)}
                 onEdit={() => handleEdit(employee)}
@@ -149,6 +182,7 @@ function App() {
             ))}
           </div>
         )}
+        <Footer />
       </div>
     </>
   );

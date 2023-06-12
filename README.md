@@ -14,6 +14,7 @@ The Employee Management App is a web application that allows you to manage emplo
 - Add new employees to the system via a modal dialog.
 - Edit existing employee information via a modal dialog.
 - Delete employees from the system.
+- Search by employee name.
 
 ## Technologies Used
 
@@ -57,5 +58,6 @@ The Employee Management App is a web application that allows you to manage emplo
 - Use the "Add Employee" button to add a new employee.
 - Click on the edit icon to modify an existing employee's information.
 - Click on the delete icon to remove an employee from the system.
+- Use the search bar at the top to filter employees by name.
 
 ## Thank you

@@ -20,12 +20,28 @@ label {
   margin-bottom: 5px;
 }
 
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  flex: 1;
+}
+
 input,
 select,
-option {
+option,
+.search-bar {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+.search-bar {
+  padding: 4px 8px;
 }
 
 input:focus,
@@ -35,9 +51,9 @@ select:focus {
 }
 
 .page {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 1rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -50,29 +66,12 @@ select:focus {
   gap: 1rem;
 }
 
-.search-bar {
-  display: flex;
-  align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.search-icon {
-  color: #ccc;
-  margin: 6px;
-}
-
-.search-input {
-  border: none;
-  outline: none;
-  flex: 1;
-}
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px white inset !important;
 }
 
 @media (min-width: 670px) {

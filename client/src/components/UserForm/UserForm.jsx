@@ -12,15 +12,7 @@ const initialUserData = {
 };
 
 const UserForm = ({ onAdd, onUpdate, user }) => {
-  const [userData, setUserData] = useState({
-    user_id: '',
-    employee_number: '',
-    first_name: '',
-    last_name: '',
-    phone_number: '',
-    email_address: '',
-    company_id: '',
-  });
+  const [userData, setUserData] = useState(initialUserData);
 
   useEffect(() => {
     if (user) {
@@ -70,6 +62,7 @@ const UserForm = ({ onAdd, onUpdate, user }) => {
           name='employee_number'
           value={employee_number}
           onChange={handleChange}
+          required
         />
       </div>
       <div className='form-control'>
@@ -79,6 +72,7 @@ const UserForm = ({ onAdd, onUpdate, user }) => {
           name='first_name'
           value={first_name}
           onChange={handleChange}
+          required
         />
       </div>
       <div className='form-control'>
@@ -88,6 +82,7 @@ const UserForm = ({ onAdd, onUpdate, user }) => {
           name='last_name'
           value={last_name}
           onChange={handleChange}
+          required
         />
       </div>
       <div className='form-control'>
