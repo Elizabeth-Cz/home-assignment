@@ -149,7 +149,7 @@ function App() {
         </Modal>
       )}
       <div className='page'>
-        <h1>User Management System</h1>
+        <h1>Employee Management System</h1>
         <div className='controls'>
           <Button
             variant='primary'
