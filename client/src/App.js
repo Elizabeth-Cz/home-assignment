@@ -126,7 +126,7 @@ function App() {
         </Modal>
       )}
       <div className='page'>
-        <h1>Assignment</h1>
+        <h1>4Indusry</h1>
         <div className='controls'>
           <Button
             variant='primary'

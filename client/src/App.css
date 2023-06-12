@@ -41,7 +41,7 @@ select:focus {
   gap: 1rem;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 2rem 1rem;
 }
 
 .grid,
@@ -75,14 +75,14 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 670px) {
   .grid,
   .controls {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1000px) {
   .grid,
   .controls {
     grid-template-columns: repeat(3, 1fr);

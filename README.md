@@ -2,6 +2,12 @@
 
 The Employee Management App is a web application that allows you to manage employee information, including adding, editing, and deleting employees. It provides a user-friendly interface for interacting with the employee data.
 
+<p align="center">
+	<img 
+	src="./client/src/assets/mockups/mockups.png"
+	alt="Mobile mockup" />
+</p>
+
 ## Features
 
 - View a list of employees with their details.
