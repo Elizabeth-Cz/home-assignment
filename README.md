@@ -8,6 +8,14 @@ The Employee Management App is a web application that allows you to manage emplo
 	alt="Mobile mockup" />
 </p>
 
+## Database Design
+
+<p align="center">
+	<img 
+	src="./client/src/assets/database-design.png"
+	alt="Mobile mockup" />
+</p>
+
 ## Features
 
 - View a list of employees with their details.
